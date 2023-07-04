@@ -3,6 +3,8 @@
 require('dotenv/config');
 
 // ℹ️ Connects to the database
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/movies-celebrities');
 require('./db');
 
 // Handles http requests (express is node js framework)
@@ -27,6 +29,12 @@ app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);
+
+const celebritiesRoutes = require('./routes/celebrities.routes')
+app.use('/', celebritiesRoutes);
+
+const moviesRoutes = require('./routes/movies.routes');
+app.use('/', moviesRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);

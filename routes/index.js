@@ -10,6 +10,10 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+// router.get("/new-celebrity.hbs", (req, res, next) => {
+//   res.render("new-celebrity");
+// });
 
 
-module.exports = router;
+
+module.exports = router
